@@ -14,8 +14,10 @@ use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class CategoryResource extends Resource
 {
@@ -32,7 +34,10 @@ class CategoryResource extends Resource
                 TextInput::make('name')
                     ->label('Nama Kategori')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn (string $operation, $state, $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+
                 FileUpload::make('thumbnail')
                     ->label('Gambar Mini Kategori')
                     ->image()
@@ -46,9 +51,15 @@ class CategoryResource extends Resource
         return $table
             ->recordTitleAttribute('name')
             ->columns([
+                ImageColumn::make('thumbnail')
+                    ->label('Gambar Mini')
+                    ->circular()
+                    ->defaultImageUrl(url('/images/default-category.png')),
+
                 TextColumn::make('name')
                     ->label('Nama Kategori')
                     ->searchable(),
+
                 TextColumn::make('slug')
                     ->label('Tautan Pendek (Slug)'),
             ])

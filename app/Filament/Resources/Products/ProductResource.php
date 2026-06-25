@@ -9,12 +9,14 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -38,6 +40,11 @@ class ProductResource extends Resource
                     ->label('Nama Produk')
                     ->required()
                     ->maxLength(255),
+                FileUpload::make('image')
+                    ->label('Gambar Produk')
+                    ->image()
+                    ->directory('produk-bunga')
+                    ->nullable(),
                 TextInput::make('price')
                     ->label('Harga Jual')
                     ->numeric()
@@ -59,6 +66,9 @@ class ProductResource extends Resource
         return $table
             ->recordTitleAttribute('name')
             ->columns([
+                ImageColumn::make('image')
+                    ->label('Gambar')
+                    ->square(),
                 TextColumn::make('name')
                     ->label('Nama Produk')
                     ->searchable(),
