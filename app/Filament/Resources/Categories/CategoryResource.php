@@ -9,6 +9,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -32,6 +33,11 @@ class CategoryResource extends Resource
                     ->label('Nama Kategori')
                     ->required()
                     ->maxLength(255),
+                FileUpload::make('thumbnail')
+                    ->label('Gambar Mini Kategori')
+                    ->image()
+                    ->directory('kategori-bunga')
+                    ->nullable(),
             ]);
     }
 
