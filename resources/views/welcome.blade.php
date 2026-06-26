@@ -42,76 +42,95 @@
 
                 <div class="flex items-center space-x-4">
                     @auth
-                        <a href="/keranjang"
-                            class="relative p-2.5 text-gray-700 hover:text-[#f297aa] transition-colors bg-[#f9d0ce]/40 rounded-full">
+                    <a href="/keranjang"
+                        class="relative p-2.5 text-gray-700 hover:text-[#f297aa] transition-colors bg-[#f9d0ce]/40 rounded-full">
 
-                            <x-heroicon-o-shopping-bag class="w-6 h-6" />
+                        <x-heroicon-o-shopping-bag class="w-6 h-6" />
 
-                            <span
-                                class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-[#b6bb79] rounded-full">
-                                {{ count(session('cart', [])) }}
-                            </span>
-                        </a>
+                        <span
+                            class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-[#b6bb79] rounded-full">
+                            {{ count(session('cart', [])) }}
+                        </span>
+                    </a>
 
-                        @if (auth()->user()->role === 'admin')
-                            <a href="/admin"
-                                class="text-xs bg-[#b6bb79] text-white px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-all flex items-center space-x-1">
-                                <x-heroicon-m-squares-plus class="inline w-4 h-4" />
-                                <span>Panel Admin</span>
-                            </a>
-                        @else
-                            <a href="{{ route('profile.index') }}"
-                                class="text-xs bg-[#f297aa] text-white px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-all flex items-center space-x-1">
-                                <x-heroicon-m-user class="inline w-4 h-4" />
-                                <span>Profil Saya</span>
-                            </a>
-                        @endif
+                    @if (auth()->user()->role === 'admin')
+                    <a href="/admin"
+                        class="text-xs bg-[#b6bb79] text-white px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-all flex items-center space-x-1">
+                        <x-heroicon-m-squares-plus class="inline w-4 h-4" />
+                        <span>Panel Admin</span>
+                    </a>
                     @else
-                        <div class="flex items-center space-x-2">
-                            <a href="{{ route('login') }}"
-                                class="text-sm font-medium text-gray-700 hover:text-[#f297aa] px-3 py-2 transition-colors">Masuk</a>
-                            <a href="{{ route('register') }}"
-                                class="text-sm font-medium bg-[#f297aa] text-white px-4 py-2 rounded-full hover:bg-opacity-90 shadow-sm shadow-[#f297aa]/30 transition-all">Daftar</a>
-                        </div>
+                    <a href="{{ route('profile.index') }}"
+                        class="text-xs bg-[#f297aa] text-white px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-all flex items-center space-x-1">
+                        <x-heroicon-m-user class="inline w-4 h-4" />
+                        <span>Profil Saya</span>
+                    </a>
+                    @endif
+                    @else
+                    <div class="flex items-center space-x-2">
+                        <a href="{{ route('login') }}"
+                            class="text-sm font-medium text-gray-700 hover:text-[#f297aa] px-3 py-2 transition-colors">Masuk</a>
+                        <a href="{{ route('register') }}"
+                            class="text-sm font-medium bg-[#f297aa] text-white px-4 py-2 rounded-full hover:bg-opacity-90 shadow-sm shadow-[#f297aa]/30 transition-all">Daftar</a>
+                    </div>
                     @endauth
                 </div>
             </div>
         </div>
     </nav>
 
-    <header id="beranda" class="relative overflow-hidden min-h-[calc(100vh-5rem)] flex items-center">
-        <div class="relative z-10 w-full px-4 py-20 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="grid items-center grid-cols-1 gap-12 md:grid-cols-2">
-                <div class="space-y-6">
-                    <span
-                        class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#f9d0ce] text-[#f297aa]">
+    <header id="beranda" class="relative overflow-hidden min-h-[calc(100vh-5rem)] flex items-center bg-[#fbf8f3]">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#f9d0ce]/30 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#f3ebd8]/40 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none"></div>
+
+        <div class="relative z-10 w-full px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-12">
+
+                <div class="space-y-6 lg:col-span-7">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-[#f9d0ce]/60 text-[#d47285] tracking-wide backdrop-blur-sm border border-[#f297aa]/20">
                         🌸 Toko Bunga Premium & Edukasi Filosofi
                     </span>
-                    <h1 class="font-serif text-5xl font-bold leading-tight text-gray-900 md:text-6xl">
-                        Ungkapkan Perasaan Lewat <span class="text-[#f297aa] italic">Keindahan</span> Bunga
+
+                    <h1 class="font-serif text-4xl font-extrabold leading-tight text-gray-900 sm:text-5xl md:text-6xl tracking-tight">
+                        Ungkapkan Perasaan <br class="hidden sm:inline" />
+                        Lewat <span class="text-[#f297aa] italic font-normal font-serif">Keindahan</span> Bunga
                     </h1>
-                    <p class="max-w-lg text-base leading-relaxed text-gray-600">
+
+                    <p class="max-w-xl text-base leading-relaxed text-gray-600">
                         Setiap helai kelopak menyimpan kisah, setiap warna menyimpan arti. Temukan rangkaian bunga
                         terbaik yang dirancang khusus untuk mewakili detak emosi dan pesan rahasia Anda.
                     </p>
-                    <div class="flex flex-col pt-4 space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
+
+                    <div class="flex flex-col pt-2 space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
                         <a href="#kategori"
-                            class="bg-[#f297aa] text-white text-center px-8 py-4 rounded-full font-semibold shadow-lg shadow-[#f297aa]/40 hover:translate-y-[-2px] transition-all">Jelajahi
-                            Produk</a>
+                            class="bg-[#f297aa] text-white text-center px-8 py-4 rounded-full font-semibold shadow-lg shadow-[#f297aa]/30 hover:bg-[#e08295] hover:shadow-[#f297aa]/50 hover:translate-y-[-2px] transition-all duration-300">
+                            Jelajahi Produk
+                        </a>
                         <a href="#makna"
-                            class="bg-white text-gray-800 text-center px-8 py-4 rounded-full font-semibold border border-[#f9d0ce] hover:bg-[#f9d0ce]/20 transition-all">Pelajari
-                            Makna</a>
+                            class="bg-white/80 backdrop-blur-sm text-gray-700 text-center px-8 py-4 rounded-full font-semibold border border-[#f9d0ce] hover:bg-[#f9d0ce]/20 hover:text-gray-900 transition-all duration-300">
+                            Pelajari Makna
+                        </a>
                     </div>
                 </div>
-                <div class="relative flex justify-center">
-                    <div
-                        class="w-72 h-72 md:w-96 md:h-96 rounded-full bg-[#f9d0ce] absolute -z-10 animate-pulse blur-xl opacity-60">
+
+                <div class="relative flex items-center justify-center lg:col-span-5">
+
+                    <div class="w-72 h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-[#f9d0ce] to-[#f3ebd8] absolute -z-10 blur-2xl opacity-70 animate-pulse"></div>
+
+                    <div class="relative w-full max-w-[340px] h-[460px] rounded-t-full overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.02] transition-all duration-500">
+                        <img src="{{ asset('images/lily-bg.jpg') }}" alt="Rangkaian Bunga Lily"
+                            class="object-cover w-full h-full transition-transform duration-1000 hover:scale-110">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                     </div>
-                    <div
-                        class="border-8 border-white shadow-2xl rounded-2xl overflow-hidden bg-gradient-to-tr from-[#f9d0ce] to-[#f297aa]/30 w-full max-w-sm h-[400px] flex items-center justify-center">
-                        <span class="font-serif text-8xl text-white/70">💐</span>
+
+                    <div class="absolute bottom-8 -left-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-[#f3ebd8] max-w-[180px] hidden sm:block animate-bounce [animation-duration:4s]">
+                        <p class="font-serif text-sm font-bold text-gray-800">MulaMula Flo</p>
+                        <p class="text-[10px] text-gray-500 mt-0.5">Bunga Cantik untuk yang Tercantik.</p>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </header>
@@ -127,27 +146,28 @@
 
             <div class="grid grid-cols-2 gap-6 md:grid-cols-4">
                 @forelse($categories as $category)
+                <div
+                    class="group relative rounded-2xl overflow-hidden bg-[#f3ebd8]/50 p-4 border border-[#f3ebd8] hover:border-[#f9d0ce] hover:shadow-xl transition-all duration-300">
                     <div
-                        class="group relative rounded-2xl overflow-hidden bg-[#f3ebd8]/50 p-4 border border-[#f3ebd8] hover:border-[#f9d0ce] hover:shadow-xl transition-all duration-300">
-                        <div
-                            class="aspect-square rounded-xl bg-[#f9d0ce]/40 mb-4 overflow-hidden flex items-center justify-center">
-                            @if ($category->thumbnail)
-                                <img src="{{ asset('storage/' . $category->thumbnail) }}" alt="{{ $category->name }}"
-                                    class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110">
-                            @else
-                                <span class="text-4xl transition-transform duration-300 group-hover:scale-120">🌸</span>
-                            @endif
-                        </div>
-                        <h3
-                            class="font-serif text-lg font-bold text-gray-800 group-hover:text-[#f297aa] transition-colors">
-                            {{ $category->name }}</h3>
-                        <p class="mt-1 text-xs text-gray-400">Lihat Koleksi &rarr;</p>
-                        <a href="{{ route('category.show', $category->slug) }}" class="absolute inset-0"></a>
+                        class="aspect-square rounded-xl bg-[#f9d0ce]/40 mb-4 overflow-hidden flex items-center justify-center">
+                        @if ($category->thumbnail)
+                        <img src="{{ asset('storage/' . $category->thumbnail) }}" alt="{{ $category->name }}"
+                            class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110">
+                        @else
+                        <span class="text-4xl transition-transform duration-300 group-hover:scale-120">🌸</span>
+                        @endif
                     </div>
+                    <h3
+                        class="font-serif text-lg font-bold text-gray-800 group-hover:text-[#f297aa] transition-colors">
+                        {{ $category->name }}
+                    </h3>
+                    <p class="mt-1 text-xs text-gray-400">Lihat Koleksi &rarr;</p>
+                    <a href="{{ route('category.show', $category->slug) }}" class="absolute inset-0"></a>
+                </div>
                 @empty
-                    <div class="col-span-full text-center py-12 text-gray-400 text-sm bg-[#f3ebd8]/30 rounded-2xl">
-                        Belum ada data kategori yang dimasukkan oleh Admin.
-                    </div>
+                <div class="col-span-full text-center py-12 text-gray-400 text-sm bg-[#f3ebd8]/30 rounded-2xl">
+                    Belum ada data kategori yang dimasukkan oleh Admin.
+                </div>
                 @endforelse
             </div>
         </div>
@@ -164,24 +184,24 @@
 
             <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
                 @forelse($flowerMeanings as $meaning)
+                <div
+                    class="bg-white p-8 rounded-2xl border border-[#f9d0ce]/60 shadow-sm relative overflow-hidden group hover:shadow-md transition-all">
                     <div
-                        class="bg-white p-8 rounded-2xl border border-[#f9d0ce]/60 shadow-sm relative overflow-hidden group hover:shadow-md transition-all">
-                        <div
-                            class="absolute top-0 right-0 bg-[#b6bb79] text-white text-xs font-semibold px-4 py-1.5 rounded-bl-xl">
-                            {{ $meaning->symbolism }}
-                        </div>
-                        <div
-                            class="w-12 h-12 rounded-xl bg-[#f3ebd8] flex items-center justify-center text-2xl mb-6 text-[#f297aa]">
-                            📖
-                        </div>
-                        <h3 class="mb-3 font-serif text-xl font-bold text-gray-900">{{ $meaning->flower_name }}</h3>
-                        <p class="text-sm leading-relaxed text-gray-600">{{ $meaning->description }}</p>
+                        class="absolute top-0 right-0 bg-[#b6bb79] text-white text-xs font-semibold px-4 py-1.5 rounded-bl-xl">
+                        {{ $meaning->symbolism }}
                     </div>
+                    <div
+                        class="w-12 h-12 rounded-xl bg-[#f3ebd8] flex items-center justify-center text-2xl mb-6 text-[#f297aa]">
+                        📖
+                    </div>
+                    <h3 class="mb-3 font-serif text-xl font-bold text-gray-900">{{ $meaning->flower_name }}</h3>
+                    <p class="text-sm leading-relaxed text-gray-600">{{ $meaning->description }}</p>
+                </div>
                 @empty
-                    <div
-                        class="col-span-full text-center py-12 text-gray-400 text-sm bg-white rounded-2xl border border-[#f9d0ce]/50">
-                        Belum ada data ensiklopedia makna bunga yang tersedia.
-                    </div>
+                <div
+                    class="col-span-full text-center py-12 text-gray-400 text-sm bg-white rounded-2xl border border-[#f9d0ce]/50">
+                    Belum ada data ensiklopedia makna bunga yang tersedia.
+                </div>
                 @endforelse
             </div>
         </div>

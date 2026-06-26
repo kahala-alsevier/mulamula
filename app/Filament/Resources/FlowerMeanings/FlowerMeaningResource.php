@@ -37,6 +37,7 @@ class FlowerMeaningResource extends Resource
                 FileUpload::make('image')
                     ->label('Gambar Filosofi Bunga')
                     ->image()
+                    ->disk('public')
                     ->directory('filosofi-bunga')
                     ->nullable(),
 
@@ -51,6 +52,7 @@ class FlowerMeaningResource extends Resource
             ->columns([
                 ImageColumn::make('image')
                     ->label('Gambar')
+                    ->disk('public')
                     ->square(),
 
                 TextColumn::make('flower_name')->label('Nama Bunga')->searchable(),

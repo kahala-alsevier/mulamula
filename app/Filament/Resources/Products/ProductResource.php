@@ -43,6 +43,7 @@ class ProductResource extends Resource
                 FileUpload::make('image')
                     ->label('Gambar Produk')
                     ->image()
+                    ->disk('public')
                     ->directory('produk-bunga')
                     ->nullable(),
                 TextInput::make('price')

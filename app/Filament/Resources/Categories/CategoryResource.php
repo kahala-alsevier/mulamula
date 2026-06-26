@@ -41,6 +41,7 @@ class CategoryResource extends Resource
                 FileUpload::make('thumbnail')
                     ->label('Gambar Mini Kategori')
                     ->image()
+                    ->disk('public')
                     ->directory('kategori-bunga')
                     ->nullable(),
             ]);
@@ -53,6 +54,7 @@ class CategoryResource extends Resource
             ->columns([
                 ImageColumn::make('thumbnail')
                     ->label('Gambar Mini')
+                    ->disk('public')
                     ->circular()
                     ->defaultImageUrl(url('/images/default-category.png')),
 
